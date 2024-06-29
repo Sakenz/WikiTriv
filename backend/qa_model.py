@@ -1,6 +1,5 @@
 from transformers import pipeline
 import random
-import re
 
 # Pre-defined questions based on the topic
 def generate_questions(topic):
@@ -60,12 +59,14 @@ def generate_questions(topic):
 def generate_answers(context, question):
     qa_pipeline = pipeline("question-answering", model="distilbert-base-uncased-distilled-squad")
     answer = qa_pipeline(question=question, context=context)
-    return answer['answer']
+    return answer
 
 def generate_distractors(context, correct_answer):
-    sentences = re.split(r'(?<=[.!?]) +', context)
-    distractors = [sentence for sentence in sentences if correct_answer not in sentence]
-    distractors = random.sample(distractors, min(3, len(distractors)))
+    sentences = context.split('. ')
+    distractors = random.sample(sentences, 3)
+    # Ensure the correct answer is not in the distractors
+    if correct_answer in distractors:
+        distractors.remove(correct_answer)
     distractors.append(correct_answer)
     random.shuffle(distractors)
     return distractors
@@ -76,7 +77,8 @@ def ask_questions(questions, context):
     
     for question in questions:
         print("\nQuestion:", question)
-        correct_answer = generate_answers(context, question)
+        answer = generate_answers(context, question)
+        correct_answer = answer['answer']
         options = generate_distractors(context, correct_answer)
 
         for i, option in enumerate(options):
@@ -93,10 +95,10 @@ def ask_questions(questions, context):
     print(f"\nYour score: {score}/{total_questions}")
 
 if __name__ == "__main__":
-    topic = input("Enter the topic (e.g., Football): ").replace(".txt", "")
+    topic = input("Enter the topic file (e.g., Football): ").replace(".txt", "")
     
     try:
-        with open(f"backend/data/{topic}.txt", "r", encoding="utf-8") as file:
+        with open(f"./data/{topic}.txt", "r", encoding="utf-8") as file:
             content = file.read()
         
         questions = generate_questions(topic)
