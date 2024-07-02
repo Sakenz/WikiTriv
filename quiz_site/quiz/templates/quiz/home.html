@@ -1,0 +1,15 @@
+{% extends 'quiz/base.html' %}
+{% block content %}
+<h1>Home</h1>
+{% if user.is_authenticated %}
+    <h2>Your Scores</h2>
+    <ul>
+    {% for topic, score in scores.items %}
+        <li>{{ topic }}: {{ score }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> to see your scores.</p>
+{% endif %}
+<a href="{% url 'game' %}">Start Quiz</a>
+{% endblock %}
