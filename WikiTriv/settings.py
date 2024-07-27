@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'core',  # core django app
+    'testapp',
+
     'bootstrap5',   # django-bootstrap-v5 app
 ]
 

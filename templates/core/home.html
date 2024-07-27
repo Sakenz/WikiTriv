@@ -1,0 +1,59 @@
+{% extends "core/base.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome to WikiTriv!</h1>
+            <p class="lead">An AI-driven quiz site to enhance the learning experience and challenge yourself while
+                having fun!</p>
+
+            <hr class="my-4">
+
+            <section class="features text-center my-4">
+                <h2>Features</h2>
+                <div class="row my-4">
+                    <div class="col-md-4">
+                        <div class="feature-box p-4 mb-4">
+                            <i class="fas fa-brain fa-3x mb-3 text-primary"></i>
+                            <h4>Intelligent Quizzes</h4>
+                            <p>
+                                Our AI-driven quizzes adjust in difficulty based on your performance, ensuring a
+                                personalized learning experience. Discover new topics, enhance your knowledge, and get
+                                instant feedback to improve.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box p-4 mb-4">
+                            <i class="fas fa-trophy fa-3x mb-3 text-success"></i>
+                            <h4>Leaderboard</h4>
+                            <p>
+                                Compete with friends and see who tops the leaderboard. Track your progress over time and
+                                aim for the top spot. The leaderboard adds a fun and competitive element to your
+                                learning experience.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-box p-4 mb-4">
+                            <i class="fas fa-user-graduate fa-3x mb-3 text-warning"></i>
+                            <h4>Learning Insights</h4>
+                            <p>
+                                Get detailed insights into your learning progress. Analyze your strengths and
+                                weaknesses, review your quiz history, and receive tailored recommendations to help you
+                                improve in areas where you need it most.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-4">
+
+            <p>Ready to test your knowledge? Click the button below to get started!</p>
+            <a class="btn btn-success btn-lg" href="/quiz/" role="button">Get Started</a>
+        </div>
+    </div>
+{% endblock %}
