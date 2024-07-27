@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Question {{ question_index }} of {{ total_questions }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mt-4">
+                <h5>{{ question.question_text }}</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="choice" id="choice1"
+                           value="{{ question.choice1 }}">
+                    <label class="form-check-label" for="choice1">{{ question.choice1 }}</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="choice" id="choice2"
+                           value="{{ question.choice2 }}">
+                    <label class="form-check-label" for="choice2">{{ question.choice2 }}</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="choice" id="choice3"
+                           value="{{ question.choice3 }}">
+                    <label class="form-check-label" for="choice3">{{ question.choice3 }}</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="choice" id="choice4"
+                           value="{{ question.choice4 }}">
+                    <label class="form-check-label" for="choice4">{{ question.choice4 }}</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Next</button>
+        </form>
+    </div>
+{% endblock %}
+
